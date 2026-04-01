@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -70,11 +71,13 @@ export default function Projects() {
                 >
                 {/* Thumbnail Image */}
                 <div className="relative w-full h-[200px] overflow-hidden rounded-t-2xl">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img 
+                    <Image 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={i === 0}
                     />
                     <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
